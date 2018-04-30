@@ -53,9 +53,12 @@ Node.js, NPM, @angular/cli, react-scripts
 
 * [Angular](https://github.com/angular/angular) - One framework. Mobile & desktop
 * [ngrx/store](https://github.com/ngrx/store) - RxJS powered state management for Angular applications, inspired by Redux
+* [material2](https://github.com/angular/material2) - Material Design components for Angular.
 
 * [React](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces
 * [Redux](https://github.com/reactjs/redux) - Predictable state container for JavaScript apps
+* [Material-UI](https://github.com/mui-org/material-ui) - React components that implement Google's Material Design.
+
 
 ## License
 
