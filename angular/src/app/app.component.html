@@ -1,0 +1,54 @@
+<section fxFill>
+  <mat-sidenav-container class="example-container" fxFill>
+    <mat-sidenav mode="side" opened fxFlex="256px" class="mat-elevation-z2">
+      <mat-toolbar color="primary">
+        <h1 class="sidebar-header" [style.fontSize]="'20px'">Game Rooms</h1>
+      </mat-toolbar>
+      <mat-nav-list *ngIf="game">
+        <mat-list-item *ngFor="let item of game.gamelist" (click)="joinGame(item.gameId, item.status)">
+          <a matLine disabled="true"> {{item.name}} </a>
+          <button mat-icon-button><mat-icon [ngClass]="{'icon-green':item.status === 'free','icon-red'  :item.status === 'game'}">games</mat-icon></button>
+          <!--<mat-icon matListIcon>game</mat-icon>-->
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <h1 class="sidebar-header" [style.fontWeight]="400">Battleship</h1>
+        <span id="user-section" fxLayout="row" *ngIf="player.logged">
+           <picture>
+                <img [src]="player.avatar" alt=""/>
+          </picture>
+          <span>{{player.username}}</span>
+        </span>
+        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="player && player.logged"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="signOut()">Sign Out</button>
+        </mat-menu>
+      </mat-toolbar>
+      <section [style.padding]="'30px'" fxLayout="column wrap" fxLayoutAlign="center center" >
+        <div *ngIf="!player.logged">
+          <mat-form-field>
+            <input matInput [(ngModel)]="usernameInput" placeholder="Username"/>
+          </mat-form-field>
+          <button mat-raised-button (click)="createGame()" color="primary">Create game!</button>
+        </div>
+        <section fxFlex="5">
+          <button mat-raised-button color="accent" (click)="startNewGame()" *ngIf="game.canCreateNewGame">Start new game</button>
+          <section *ngIf="player.logged && !game.gameStarted ">
+            <h4>Waiting for new opponent!</h4>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </section>
+        </section>
+        <div fxLayout="row" class="thegame" *ngIf="player.joined">
+          <bs-board *ngIf="boards.player" [boardName]="'My Board'"
+                    [board]="boards.player" [move]="!player.nextMove"
+                    (cellAction)="cellAction($event, 'player')"> </bs-board>
+          <bs-board *ngIf="boards.opponent" [boardName]="player.opponent.name"
+                    [board]="boards.opponent" [move]="player.nextMove"
+                    (cellAction)="cellAction($event, 'opponent')"> </bs-board>
+        </div>
+      </section>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>

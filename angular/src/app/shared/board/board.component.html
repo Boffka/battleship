@@ -1,0 +1,21 @@
+<mat-card [ngClass]="{'move-board': move}">
+  <mat-card-header>
+    <mat-card-title>
+      <span fxFlex></span>
+      <h2>{{name}}</h2>
+      <span fxFlex></span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="Board">
+      <div class="board-row" *ngFor="let row of board; let Rindex = index">
+        <button class="square"
+                *ngFor="let cell of row; let Cindex = index"
+                [ngClass]="{ 'used':cell.used,'ship':cell.value === 1 }"
+                (click)="action(Rindex, Cindex)" [disabled]="cell.used">
+
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

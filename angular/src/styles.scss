@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles/material.theme";
+html, body{
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.used {
+  background: #89C4F4;
+}
+
+.used.ship {
+  background: #D91E18 !important;
+}
+
+.square {
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.Board {
+  padding: 50px;
+}
+
+.thegame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.ship {
+  background: #2C3E50;
+}
+
+.icon-green {
+  color: #03C9A9 !important;
+  fill: #03C9A9 !important;
+}
+
+.icon-red {
+  color: #F64747 !important;
+  fill: #F64747 !important;
+}
+
+.icon-gray {
+  color: #95A5A6 !important;
+  fill: #95A5A6 !important;
+}
